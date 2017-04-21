@@ -3,10 +3,10 @@
 // DATA IS RETRIEVED AND CHNAGED THROUGH MODEL DATA AND METHODS, CONTAINED IN SERVICES
 (function(){
 
-function HomeCtrl($scope){
+function HomeCtrl($scope,questions){
   // BIND question MODEL DATA TO FORNT END, thorugh a SERVICE
-  // $scope.questions = questions.questions
-  //
+  $scope.questions = questions.questions
+
   // $scope.ask = function(){
   //   if(!$scope.title || $scope.title === '' || $scope.body || $scope.body === '') { return; }
   //
@@ -26,7 +26,7 @@ function HomeCtrl($scope){
 
 angular
 .module('dunno')
-.controller('HomeCtrl', ['$scope', HomeCtrl])
+.controller('HomeCtrl', ['$scope','questions', HomeCtrl])
 
 
 })();

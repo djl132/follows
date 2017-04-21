@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'random_data'
+
+
+50.times do
+  question = Question.create!(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph
+  )
+  question.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+end
+
+questions = Question.all

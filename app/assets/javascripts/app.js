@@ -17,14 +17,14 @@
   $stateProvider //METHOD-CHAINING
     .state('home', {
         url:'/',
-        templateUrl: '_home.html',
+        templateUrl: 'home/_home.html',
         controller:'HomeCtrl as home'
-        // resolve: {
-        //   // get real-time questions from backend
-        //   questionsFeed: ['questions', function(questions){
-        //     return questions.getAll();
-        //   }]
-        // }
+        resolve: {
+          // get real-time questions from backend
+          getQuestionsForFeed: ['questions', function(questions){
+            return questions.getAll();
+          }]
+        }
   })
 
     // .state('questions', {
@@ -43,7 +43,7 @@
     };
 
 
-  angular.module('dunno', ['templates','ui.router'])
+  angular.module('dunno',['templates','ui.router'])
   .config(config)
 
 })();

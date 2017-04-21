@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h1>Feed</h1>
+</div>
+
+<div ng-repeat="question in questions | orderBy:'-upvotes'">
+  <span class="glyphicon glyphicon-thumbs-up"
+    ng-click="incrementUpvotes(question)"></span>
+  {{question.upvotes}}
+  <span style="font-size:20px; margin-left:10px;">
+    <a ng-show="question.link" href="{{question.link}}">
+      {{question.title}}
+    </a>
+    <span ng-hide="question.link">
+      {{question.title}}
+    </span>
+  </span>
+  <span>
+    <a href="/questions/{{$index}}">Answers</a>
+  </span>
+</div>
+
+<form ng-submit="ask()"
+  style="margin-top:30px;">
+
+  <h3>Ask a question</h3>
+
+  <div class="form-group">
+    <input type="text"
+    class="form-control"
+    placeholder="Title of question"
+    ng-model="title"></input>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+    class="form-control"
+    placeholder="Body of question"
+    ng-model="body"></input>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Ask Question</button>
+</form>
