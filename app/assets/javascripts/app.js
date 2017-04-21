@@ -17,7 +17,7 @@
   $stateProvider //METHOD-CHAINING
     .state('home', {
         url:'/',
-        templateUrl: '/home/_home.html',
+        templateUrl: '_home.html',
         controller:'HomeCtrl as home'
         // resolve: {
         //   // get real-time questions from backend
