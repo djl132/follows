@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 
   def create
      respond_with Question.create(question_params)
-   end
+  end
 
    def show
      respond_with Question.find(params[:id])

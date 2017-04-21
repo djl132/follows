@@ -8,7 +8,7 @@
 require 'random_data'
 
 
-50.times do
+10.times do
   question = Question.create!(
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph

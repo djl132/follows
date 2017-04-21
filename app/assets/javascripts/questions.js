@@ -11,11 +11,11 @@
       o.getAll = function() {
         console.log("hi")
 
-         return $http.get('/questions.json').then(function(data){
+         return $http.get('/questions.json').then(function(q){
            console.log("hi")
 
 // COPY RESPONSE DATA INTO SERVICES
-           angular.copy(data, o.questions);
+           angular.copy(q.data, o.questions);
            console.log("test")
 
          });
@@ -27,13 +27,14 @@
 //           });
 //         };
 //
-      //  o.create = function(question){
-      //   //  send question to BACKEND API
-      //    return $http.post('/questions.json', question).success(function(data){
-      //     //  update frontend if backend adds question
-      //      o.questions.push(data);
-      //    })
-      //  }
+       o.create = function(question){
+        //  send question to BACKEND API
+         return $http.post('/questions.json', question).then(function(q){
+           console.log("hi")
+          //  update frontend if backend adds question
+           o.questions.push(q.data);
+         })
+       }
 // // add new answer to a question
 //        o.addAnswer = function(id, answer) {
 //          return $http.post('/questions/' + id + '/answers.json', answer)

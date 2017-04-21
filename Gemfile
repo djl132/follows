@@ -56,3 +56,5 @@ gem 'angular-rails-templates'
 gem 'angularjs-rails'
 gem 'pg'
 gem "responders"
+gem 'rails_db'
+gem 'angular_rails_csrf'
