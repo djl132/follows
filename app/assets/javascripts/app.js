@@ -18,10 +18,11 @@
     .state('home', {
         url:'/',
         templateUrl: 'home/_home.html',
-        controller:'HomeCtrl as home'
+        controller:'HomeCtrl',
         resolve: {
           // get real-time questions from backend
           getQuestionsForFeed: ['questions', function(questions){
+            console.log("hi")
             return questions.getAll();
           }]
         }

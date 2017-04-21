@@ -54,3 +54,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'angular-rails-templates'
 gem 'angularjs-rails'
+gem 'pg'
+gem "responders"

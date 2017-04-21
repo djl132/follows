@@ -2,21 +2,9 @@
   <h1>Feed</h1>
 </div>
 
-<div ng-repeat="question in questions | orderBy:'-upvotes'">
-  <span class="glyphicon glyphicon-thumbs-up"
-    ng-click="incrementUpvotes(question)"></span>
-  {{question.upvotes}}
-  <span style="font-size:20px; margin-left:10px;">
-    <a ng-show="question.link" href="{{question.link}}">
+<div ng-repeat="question in questions">
       {{question.title}}
-    </a>
-    <span ng-hide="question.link">
-      {{question.title}}
-    </span>
-  </span>
-  <span>
-    <a href="/questions/{{$index}}">Answers</a>
-  </span>
+      {{question.body}}
 </div>
 
 <form ng-submit="ask()"
