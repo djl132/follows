@@ -2,10 +2,25 @@
   <h1>Feed</h1>
 </div>
 
-<div ng-repeat="question in questions">
-      {{question.title}}
-      {{question.body}}
-</div>
+<div class="row">
+  <div class="col-md-8">
+
+    <div ng-repeat="question in questions">
+        <div class="media">
+
+          <div class="media-body">
+            <h4 class="media-heading">
+
+                <h3>  {{question.title}} </h3>
+                <h6>  {{question.body}}></h6>
+                <br>
+                <hr>
+              </h4>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class ="col-md-4">
 
 <form ng-submit="ask()"
   style="margin-top:30px;">
@@ -28,3 +43,7 @@
 
   <button type="submit" class="btn btn-primary">Ask Question</button>
 </form>
+</div>
+
+
+</div>
