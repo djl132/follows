@@ -22,11 +22,32 @@
         resolve: {
           // get real-time questions from backend
           getQuestionsForFeed: ['questions', function(questions){
-            console.log("hi")
             return questions.getAll();
           }]
         }
+
   })
+
+  .state('login', {
+   url: '/login',
+   templateUrl: 'auth/_login.html',
+   controller: 'AuthCtrl',
+  //  onEnter: ['$state', 'Auth', function($state, Auth) {
+  //    Auth.currentUser().then(function (){
+  //      $state.go('home');
+  //    })
+  //  }]
+ })
+ .state('register', {
+   url: '/register',
+   templateUrl: 'auth/_register.html',
+   controller: 'AuthCtrl',
+    onEnter: ['$state', 'Auth', function($state, Auth) {
+      Auth.currentUser().then(function (){
+        $state.go('home');
+      })
+    }]
+ });
 
     // .state('questions', {
     //     url:'/questions/{id}',
@@ -44,7 +65,7 @@
     };
 
 
-  angular.module('dunno',['templates','ui.router'])
+  angular.module('dunno',['templates','Devise','ui.router'])
   .config(config)
 
 })();
