@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
 # must be signed in to create comment
-before_action :require_sign_in
+before_action :authenticate_user!, only: [:create, :destroy]
 
 # if want to destory, must be authorized
 before_action :authorize_user, only: [:destroy]

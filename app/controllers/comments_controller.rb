@@ -3,7 +3,9 @@ class CommentsController < ApplicationController
 # before_action :require_sign_in
 #
 # # if want to destory, must be authorized
-# before_action :authorize_user, only: [:destroy]
+before_action :authenticate_user!, only: [:create]
+before_action :authorize_user, only: [:destroy]
+
 
 
 def create
@@ -31,6 +33,15 @@ end
  private
    def comment_params
      params.require(:comment).permit(:content)
+   end
+
+   def authorize_user
+     answer = Answer.find(params[:answer_id])
+     comment = answer.comments.find(params[:id])
+     unless current_user == comment.user || current_user.admin?
+       flash[:alert] = "You do not have permission to delete the comment."
+       redirect_to [comment.answer.question, comment.answer]
+     end
    end
 
  end
@@ -73,13 +84,7 @@ end
 #       params.require(:comment).permit(:content, :image, :file)
 #     end
 #
-# # authoize Destroy comment
-#     def authorize_user
-#       comment = Comment.find(params[:id])
-#       unless current_user == comment.user || current_user.admin?
-#         flash[:alert] = "You do not have permission to delete the comment."
-#         redirect_to [comment.answer.question, comment.answer]
-#       end
-#     end
+# authoize Destroy comment
+
 #
 # end
