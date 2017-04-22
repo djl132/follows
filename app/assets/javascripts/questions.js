@@ -9,14 +9,11 @@
 
       // get all posts, and update SERVICE OBJECT(FRONTEND)
       o.getAll = function() {
-        console.log("hi")
 
          return $http.get('/questions.json').then(function(q){
-           console.log("hi")
 
 // COPY RESPONSE DATA INTO SERVICES
            angular.copy(q.data, o.questions);
-           console.log("test")
 
          });
        };

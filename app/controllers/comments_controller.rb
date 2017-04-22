@@ -10,7 +10,7 @@ before_action :authorize_user, only: [:destroy]
 
 def create
    answer = Answer.find(params[:answer_id])
-   comment = answer.comments.create(comment_params)
+   comment = answer.comments.create(comment_params.merge(user_id: current_user.id))
    respond_with answer, comment
 end
 
