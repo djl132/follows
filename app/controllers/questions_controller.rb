@@ -5,12 +5,12 @@
     before_action :authenticate_user!, except: [:index]
 
     def index
-      puts current_user.inspect
       respond_with Question.all
     end
 
     def create
-       respond_with Question.create(question_params)
+        # MERGE INFORMATION INTO PARAMS FOR MASS-ASSIGNMENT
+       respond_with Question.create(question_params.merge(user_id: current_user.id))
     end
 
      def show
