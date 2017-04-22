@@ -26,7 +26,6 @@
           }]
         }
 
-
   })
 
   .state('login', {
@@ -41,6 +40,7 @@
    }
  }]
  })
+
  .state('register', {
    url: '/register',
    templateUrl: 'auth/_register.html',
@@ -52,18 +52,18 @@
      })
    }
  }]
- });
+ })
 
-    // .state('questions', {
-    //     url:'/questions/{id}',
-    //     templateUrl: 'questions/_question.html',
-    //     controller: 'QuestionsCtrl as question',
-    //     resolve: {
-    //       question: ['$stateParams', 'questions', function($stateParams, questions) {
-    //         return questions.get($stateParams.id);
-    //       }]
-    //     }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
-    // })
+    .state('questions', {
+        url:'/questions/{id}',
+        templateUrl: 'questions/_question.html',
+        controller: 'QuestionsCtrl',
+        resolve: {
+          question: ['$stateParams', 'questions', function($stateParams, questions) {
+            return questions.get($stateParams.id);
+          }]
+        }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
+    })
 
   // $urlRouterProvider.otherwise('home');
 

@@ -10,13 +10,21 @@
 
           <div class="media-body">
             <h4 class="media-heading">
+              <h6>  <b>{{question.user.username}}</b>  asked <b>{{question.group.name}}</b></h6>
 
                 <h3>  {{question.title}} </h3>
                 <br>
                 <h6>  {{question.body}} </h6>
-                <h6>  {{question.user.username}} </h6>
                 <br>
+                <h4>
+                  <a ng-click="answer()" class="btn btn-primary">Answer</a>
+                  <a href="/questions/{question.id}" class="btn btn-primary">{{question.answers.length}}Answers</a>
+                  <a ng-click="followQuestion()" class="btn btn-primary">Follow Question</a>
+                  <a ng-click="followTopic()" class="btn btn-primary">Follow Topic</a>
+                </h4>
                 <hr>
+
+                <br>
               </h4>
             </div>
           </div>
@@ -41,6 +49,13 @@
     class="form-control"
     placeholder="Body of question"
     ng-model="body"></input>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+    class="form-control"
+    placeholder="Enter topic"
+    ng-model="topic_name"></input>
   </div>
 
   <button type="submit" class="btn btn-primary">Ask Question</button>

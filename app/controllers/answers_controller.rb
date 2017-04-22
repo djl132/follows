@@ -4,6 +4,7 @@ class AnswersController < ApplicationController
   def create
     q = Question.find(params[:question_id])
     answer = q.answers.create(answer_params.merge(user_id: current_user.id))
+    puts answer.inspect
     respond_with q, answer
   end
 

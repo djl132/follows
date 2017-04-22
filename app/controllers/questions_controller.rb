@@ -10,7 +10,10 @@
 
     def create
         # MERGE INFORMATION INTO PARAMS FOR MASS-ASSIGNMENT
-       respond_with Question.create(question_params.merge(user_id: current_user.id))
+        group = Group.find_by(name: params[:topic])
+        question = Question.create(question_params.merge(user_id: current_user.id, group: group))
+        # question.group_id = Group.find_by(name: params[:question][:topic]).id
+        respond_with question
     end
 
      def show
@@ -18,9 +21,10 @@
      end
 
 
+# creates another hash that is strong PARAMETERIZED, FILTERED for MASS ASSIGNMENT.
      private
      def question_params
-        params.require(:question).permit(:title, :body)
+        params.require(:question).permit(:title, :body, :topic)
      end
 
 

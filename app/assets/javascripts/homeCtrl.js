@@ -8,17 +8,21 @@ function HomeCtrl($scope,questions){
   $scope.questions = questions.questions
 
   $scope.ask = function(){
-    if(!$scope.title || $scope.title === '' || !$scope.body || $scope.body === '') { return; }
+    if(!$scope.title || $scope.title === '' || !$scope.body || $scope.body === ''|| !$scope.topic_name || $scope.topic_name === '') { return; }
 
     // CREATS question ON BACKEND ANDTHEN UPDATES
     //IT IN THE FRONTEND
     questions.create({
       title: $scope.title,
-      body: $scope.body
+      body: $scope.body,
+      topic: $scope.topic_name
     });
     $scope.title = '';
     $scope.body = '';
+    $scope.topic_name = '';
   };
+
+
 
   }
 

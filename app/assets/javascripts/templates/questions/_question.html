@@ -1,0 +1,51 @@
+<div class="page-header">
+  <h1>Show Question</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+
+        <div class="media">
+
+          <div class="media-body">
+            <h4 class="media-heading">
+
+              <strong>{{question.user.username}}</strong>  asked <strong>{{question.group.name}}</strong>
+
+                <h3>  {{question.title}} </h3>
+                <br>
+                <h6>  {{question.body}} </h6>
+                <br>
+
+                <hr>
+
+              </h4>
+          </div>
+        </div>
+  </div>
+  <div class ="col-md-4">
+
+    <h4>
+      <a ng-click="followQuestion(question.id)" class="btn btn-primary">Follow Question</a>
+      <a ng-click="followTopic(question.group)" class="btn btn-primary">Follow Topic</a>
+    </h4>
+
+
+    <form ng-submit="answer()"
+      style="margin-top:30px;">
+
+      <h3>Answer question</h3>
+
+      <div class="form-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Body of question"
+        ng-model="body"></input>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Answer Question</button>
+    </form>
+  </div>
+
+
+</div>
