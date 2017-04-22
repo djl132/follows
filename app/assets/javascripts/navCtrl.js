@@ -4,6 +4,7 @@ angular.module('dunno')
 'Auth',
 function($scope, Auth){
   $scope.signedIn = Auth.isAuthenticated;
+  console.log(Auth.isAuthenticated())
   $scope.logout = Auth.logout;
 //retrive current user data
 if (Auth.isAuthenticated()){

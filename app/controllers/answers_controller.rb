@@ -23,14 +23,14 @@ class AnswersController < ApplicationController
          params.require(:answer).permit(:content)
        end
 
-           def authorize_user
-             q = Question.find(params[:question_id])
-             answer = q.answers.find(params[:answer_id])            # #11
-                unless current_user == answer.user || current_user.admin?
-                  flash[:alert] = "You must be an admin to do that."
-                  redirect_to [answer.question, answer]
-                end
-           end
+       def authorize_user
+         q = Question.find(params[:question_id])
+         answer = q.answers.find(params[:answer_id])            # #11
+            unless current_user == answer.user || current_user.admin?
+              flash[:alert] = "You must be an admin to do that."
+              redirect_to [answer.question, answer]
+            end
+       end
 
 end
  # require sign in to CRU answers excapt for show

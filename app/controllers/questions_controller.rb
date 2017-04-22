@@ -1,27 +1,28 @@
-class QuestionsController < ApplicationController
+  class QuestionsController < ApplicationController
 
-  # MUST be signed in as an admin in order to CREATE, UPDATE, NEW, EDIT
-  # before_action :require_sign_in, except: [:index, :show]
-  before_action :authenticate_user!, only: [:create]
+    # MUST be signed in as an admin in order to CREATE, UPDATE, NEW, EDIT
+    # before_action :require_sign_in, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index]
 
-  def index
-    respond_with Question.all
-  end
+    def index
+      puts current_user.inspect
+      respond_with Question.all
+    end
 
-  def create
-     respond_with Question.create(question_params)
-  end
+    def create
+       respond_with Question.create(question_params)
+    end
 
-   def show
-     respond_with Question.find(params[:id])
+     def show
+       respond_with Question.find(params[:id])
+     end
+
+     private
+     def question_params
+        params.require(:question).permit(:title, :body)
+     end
+
    end
-
-   private
-   def question_params
-      params.require(:question).permit(:title, :body)
-   end
-
- end
 
 
 #
