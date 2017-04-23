@@ -11,6 +11,9 @@ function QuestionsCtrl($scope, questions, question){
     //IT IN THE FRONTEND
     questions.addAnswer(question.id, {
       body: $scope.body
+
+      // THIS WORKS BECAUSE JSON RETURNED ABOUT QUESTIONS, INCLUDES ANSWERS TOO RIGHT
+      //DOES THIS CHANGE ORIGINAL DB question OR NO?
     }).then(function(answer){ $scope.question.answers.push(answer.data) });
     $scope.body = '';
 

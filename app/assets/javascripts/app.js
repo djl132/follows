@@ -65,6 +65,17 @@
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
     })
+    .state('answers', {
+        url:'/answers/{id}',
+        templateUrl: 'answers/_answer.html',
+        controller: 'AnswersCtrl',
+        resolve: {
+          answer: ['$stateParams', 'questions', function($stateParams, questions) {
+            console.log($stateParams.id)
+            return answer.get($stateParams.id);
+          }]
+        }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
+    })
 
   // $urlRouterProvider.otherwise('home');
 

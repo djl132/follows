@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
     resources :answers, only: [] do
 
-      resources :comments, only: [:create, :destroy]
+      resources :comments
 
       member do
         post '/up-vote' => 'votes#up_vote', as: :up_vote
