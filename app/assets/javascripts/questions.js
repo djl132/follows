@@ -10,6 +10,7 @@
       o.getAll = function() {
 
          return $http.get('/questions.json').then(function(q){
+           console.log(q.data)
 // COPY RESPONSE DATA INTO SERVICES
            angular.copy(q.data, o.questions);
 

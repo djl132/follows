@@ -6,7 +6,11 @@ class CommentsController < ApplicationController
 before_action :authenticate_user!, only: [:create]
 before_action :authorize_user, only: [:destroy]
 
-
+def index
+  answer = Answer.find(params[:answer_id])
+  puts answer.comments.inspect
+  respond_with answer.comments
+end
 
 def create
    answer = Answer.find(params[:answer_id])

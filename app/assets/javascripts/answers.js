@@ -6,34 +6,26 @@
       var o = { answers: []};
 
       // get all posts, and update SERVICE OBJECT(FRONTEND)
-      o.getUsersAnswers = function() {
+      o.getUsersAnswers = function(user_id) {
 
          return $http.get('/questions.json').then(function(q){
 // COPY RESPONSE DATA INTO SERVICES
-           angular.copy(q.data, o.questions);
+           angular.copy(q.data, o.answers);
 
 
          });
        };
 
-       o.getComments = function(id) {
-          return $http.get('/answers/' + id + '/comments.json').then(function(comments){
-            console.log("it is getting comments of an answer")
-            return comments.data;
-          });
+       o.getComments = function(answer) {
+          return $http.get('/answers/' + answer.id + '/comments.json').then(function(commentsResponse){
+            console.log("Got comment data for answer!", commentResponse.data)
+              return commentsReponse.data;
+          }, console.log("failed to load"))
         };
 
-       o.create = function(id){
-        //  send question to BACKEND API
-         return $http.post('/answers/'+ id + '/comments.json', comment).then(function(q){
-          //  update frontend if backend adds question
-           o.questions.push(q.data);
-         })
-       };
-
 // add new answer to a question
-       o.addAnswer = function(id, answer) {
-         return $http.post('/questions/' + id + '/answers.json', answer)
+       o.addComment = function(id, answer) {
+         return $http.post('/answers/' + id + '/comments.json', answer)
        };
 
 
@@ -42,6 +34,6 @@
 
 angular
   .module('dunno')
-  .factory('questions', ['$http', Questions])
+  .factory('answers', ['$http', Answers])
 
 })();

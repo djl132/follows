@@ -2,7 +2,7 @@
 (function(){
 
 
-  function config($locationProvider, $stateProvider) {
+  function config($urlRouterProvider, $locationProvider, $stateProvider) {
 
   //PROVIDES RULES ABOUT HOW TO DISPLAY LOCATION url info?
   $locationProvider
@@ -59,7 +59,7 @@
         templateUrl: 'questions/_question.html',
         controller: 'QuestionsCtrl',
         resolve: {
-          question: ['$stateParams', 'questions', function($stateParams, questions) {
+          question: ['$stateParams', 'questions','answers', function($stateParams, questions, answers) {
             console.log($stateParams.id)
             return questions.get($stateParams.id);
           }]
@@ -70,19 +70,19 @@
         templateUrl: 'answers/_answer.html',
         controller: 'AnswersCtrl',
         resolve: {
-          answer: ['$stateParams', 'questions', function($stateParams, questions) {
+          answer: ['$stateParams', 'answers', function($stateParams, answers) {
             console.log($stateParams.id)
             return answer.get($stateParams.id);
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
-    })
+    });
 
-  // $urlRouterProvider.otherwise('home');
+  $urlRouterProvider.otherwise('home');
 
     };
 
 
-  angular.module('dunno',['templates','Devise','ui.router'])
+  angular.module('dunno',['templates','Devise', 'ui.router'])
   .config(config)
 
 })();

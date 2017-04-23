@@ -61,7 +61,6 @@ gem 'angular_rails_csrf'
 gem 'devise'
 
 
-
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
 end

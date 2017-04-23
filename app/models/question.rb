@@ -7,6 +7,6 @@ class Question < ApplicationRecord
   # OVERRIDE
   # TO INCLUDE question and answer's USER for each JSON REQUEST
    def as_json(options = {})
-     super(options.merge(include: [:group, :user, answers: {include: :user}] ))
+     super(options.merge(include: [:group, :user, answers: {include: [:user, :comments]} ] ))
    end
 end

@@ -31,9 +31,26 @@
 
                     <h6>  <b>{{answer.user.username}}</b>  answered</h6>
                     <h3>  {{answer.body}} </h3>
-                    <a href="/answer/{{answer.id}}">Comments</a>
 
-                    <hr>
+                    <a>Comments</a>
+
+                    <div ng-repeat="comment in answer.comments">
+
+                        <h7>  <b>{{comment.user.username}}</b>  commented</h6>
+                        <h4>  {{comment.body}} </h3>
+                        <br>
+                    </div>
+
+                    <form ng-submit="comment(answer)"
+                      style="margin-top:30px;">
+                      <div class="form-group">
+                        <input type="text"
+                        class="form-control"
+                        placeholder="Comment on answer"
+                        ng-model="body"></input>
+                      </div>
+                      <a type="submit" class="btn btn-primary">Comment</a>
+                    </form>
 
                     <br>
 
