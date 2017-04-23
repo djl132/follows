@@ -60,6 +60,7 @@
         controller: 'QuestionsCtrl',
         resolve: {
           question: ['$stateParams', 'questions', function($stateParams, questions) {
+            console.log($stateParams.id)
             return questions.get($stateParams.id);
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS

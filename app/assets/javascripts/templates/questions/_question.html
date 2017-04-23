@@ -22,6 +22,26 @@
               </h4>
           </div>
         </div>
+
+        <div ng-repeat="answer in question.answers">
+            <div class="media">
+
+              <div class="media-body">
+                <h4 class="media-heading">
+
+                    <h6>  <b>{{answer.user.username}}</b>  answered</h6>
+                    <h3>  {{answer.body}} </h3>
+
+                    <hr>
+
+                    <br>
+
+                  </h4>
+                </div>
+              </div>
+        </div>
+
+
   </div>
   <div class ="col-md-4">
 

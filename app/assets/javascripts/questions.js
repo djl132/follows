@@ -21,6 +21,7 @@
 
        o.get = function(id) {
           return $http.get('/questions/' + id + '.json').then(function(q){
+            console.log("it is getting")
             return q.data;
           });
         };
@@ -31,13 +32,12 @@
           //  update frontend if backend adds question
            o.questions.push(q.data);
          })
-       }
+       };
 // add new answer to a question
        o.addAnswer = function(id, answer) {
          return $http.post('/questions/' + id + '/answers.json', answer)
+       };
 
-         }
-       }
 
        return o;
     }

@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
        def answer_params
 
          # WHAT DOES PARAMS.REQUIRE DO?
-         params.require(:answer).permit(:content)
+         params.require(:answer).permit(:body)
        end
 
        def authorize_user
