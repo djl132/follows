@@ -30,8 +30,10 @@ function QuestionsCtrl($scope, questions, question, answers){
       return answers.getComments(answer)
     }
 
-    $scope.commentOnAnswer = function(answer){
-      
+    $scope.commentOnAnswer = function(answer, comment){
+      answers.addComment(answer, comment).then(function(comment){
+
+      })
     }
 
 

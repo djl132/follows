@@ -24,8 +24,8 @@
         };
 
 // add new answer to a question
-       o.addComment = function(id, answer) {
-         return $http.post('/answers/' + id + '/comments.json', answer)
+       o.addComment = function(id, comment) {
+         return $http.post('/answers/' + id + '/comments.json', comment)
        };
 
 
