@@ -2,7 +2,7 @@
 (function(){
 
 
-  function config($locationProvider, $stateProvider) {
+  function config($locationProvider, $stateProvider) {  
 
   //PROVIDES RULES ABOUT HOW TO DISPLAY LOCATION url info?
   $locationProvider
@@ -72,17 +72,17 @@
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
     })
-    .state('group', {
-        url:'/groups/{id}',
-        templateUrl: 'groups/_group.html',
-        controller: 'GroupCtrl',
-        resolve: {
-          group: ['$stateParams', 'groups', function($stateParams, groups) {
-
-            return groups.get($stateParams.id);
-          }]
-        }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
-    });
+    // .state('group', {
+    //     url:'/groups/{id}',
+    //     templateUrl: 'groups/_group.html',
+    //     controller: 'GroupCtrl',
+    //     resolve: {
+    //       group: ['$stateParams', 'groups', function($stateParams, groups) {
+    //
+    //         return groups.get($stateParams.id);
+    //       }]
+    //     }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
+    // });
 
 
     };

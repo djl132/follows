@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   has_many :users
 
 # VALIDATIONS
-  validates_associated :users
+  # validates_associated :users
   validates :name, length: {minimum: 2}, presence: true
   validates :description, length: {minimum: 10}, presence: true
 

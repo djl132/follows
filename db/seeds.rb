@@ -15,6 +15,12 @@ require 'random_data'
   )
 end
 
+admin = User.create!(
+  username: 'djl132',
+  email: 'djl132@case.edu',
+  password: 'helloworld'
+)
+
 5.times do
   group = Group.create!(
     name: RandomData.random_word,

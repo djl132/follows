@@ -2,7 +2,7 @@
 
     # MUST be signed in as an admin in order to CREATE, UPDATE, NEW, EDIT
     # before_action :require_sign_in, except: [:index, :show]
-    before_action :authenticate_user!, except: [:index]
+    before_action :authenticate_user!, except: [:index, :show]
 
     def index
       respond_with Question.all
@@ -17,6 +17,7 @@
     end
 
      def show
+       puts "went through"
        respond_with Question.find(params[:id])
      end
 

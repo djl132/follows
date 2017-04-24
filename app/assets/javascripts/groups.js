@@ -2,6 +2,8 @@
 // STORE QUESTIONS adn CALL GET/POST METHODS DB DATA IN A SERVICE OBJECT.
 (function(){
 
+  console.log("groups service is loaded")
+
     function Groups($http){
       var o = { groups: []};
 
