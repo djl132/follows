@@ -21,61 +21,67 @@
         controller:'HomeCtrl',
         resolve: {
           // get real-time questions from backend
-          getQuestionsForFeed: ['questions', function(questions){
+          questionPromise: ['questions', function(questions){
             return questions.getAll();
           }]
         }
 
   })
-
-  .state('login', {
-   url: '/login',
-   templateUrl: 'auth/_login.html',
-   controller: 'AuthCtrl',
-   onEnter: ['$state', 'Auth', function($state, Auth) {
-     if (Auth.isAuthenticated()){
-     Auth.currentUser().then(function (){
-       $state.go('home');
-     })
-   }
- }]
- })
-
- .state('register', {
-   url: '/register',
-   templateUrl: 'auth/_register.html',
-   controller: 'AuthCtrl',
-   onEnter: ['$state', 'Auth', function($state, Auth) {
-     if (Auth.isAuthenticated()){
-     Auth.currentUser().then(function (){
-       $state.go('home');
-     })
-   }
- }]
- })
-
-    .state('questions', {
+    .state('question', {
         url:'/questions/{id}',
         templateUrl: 'questions/_question.html',
         controller: 'QuestionsCtrl',
         resolve: {
           question: ['$stateParams', 'questions','answers', function($stateParams, questions, answers) {
-            console.log($stateParams.id)
             return questions.get($stateParams.id);
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
     })
-    .state('answers', {
-        url:'/answers/{id}',
-        templateUrl: 'answers/_answer.html',
-        controller: 'AnswersCtrl',
+    .state('groups', {
+        url:'/groups',
+        templateUrl: 'groups/_groups.html',
+        controller: 'GroupsCtrl',
         resolve: {
-          answer: ['$stateParams', 'answers', function($stateParams, answers) {
-            console.log($stateParams.id)
-            return answer.get($stateParams.id);
+          groups: ['groups', function(groups) {
+            return groups.getAll();
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
-    });
+    })
+    .state('group', {
+        url:'/groups/{id}',
+        templateUrl: 'groups/_group.html',
+        controller: 'GroupCtrl',
+        resolve: {
+          group: ['$stateParams', 'groups', function($stateParams, groups) {
+
+            return groups.get($stateParams.id);
+          }]
+        }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
+    })
+    .state('login', {
+     url: '/login',
+     templateUrl: 'auth/_login.html',
+     controller: 'AuthCtrl',
+     onEnter: ['$state', 'Auth', function($state, Auth) {
+       if (Auth.isAuthenticated()){
+       Auth.currentUser().then(function (){
+         $state.go('home');
+       })
+     }
+   }]
+   })
+   .state('register', {
+     url: '/register',
+     templateUrl: 'auth/_register.html',
+     controller: 'AuthCtrl',
+     onEnter: ['$state', 'Auth', function($state, Auth) {
+       if (Auth.isAuthenticated()){
+       Auth.currentUser().then(function (){
+         $state.go('home');
+       })
+     }
+   }]
+ });
 
   $urlRouterProvider.otherwise('home');
 

@@ -4,26 +4,28 @@
 (function(){
 
 function GroupsCtrl($scope,groups){
-  // BIND question MODEL DATA TO FORNT END, thorugh a SERVICE
-  $scope.questions = questions.questions
+  // BIND group MODEL DATA TO FORNT END, thorugh a SERVICE
+  $scope.groups = groups.groups
 
-    $scope.askGroup = function(){
-      if(!$scope.title || $scope.title === '' || !$scope.body || $scope.body === ''|| !$scope.topic_name || $scope.topic_name === '') { return; }
+  $scope.createGroup = function(){
+    if(!$scope.name || $scope.name === '' || !$scope.description || $scope.description === ''){
+       return; }
 
-      // CREATS question ON BACKEND ANDTHEN UPDATES
-      //IT IN THE FRONTEND
-      questions.create({
-        title: $scope.title,
-        body: $scope.body,
-        topic: $scope.topic_name
-      });
-      $scope.title = '';
-      $scope.body = '';
-      $scope.topic_name = '';
-    };
+    // CREATS group ON BACKEND ANDTHEN UPDATES
+    //IT IN THE FRONTEND
+    groups.create({
+      topic: $scope.name,
+      description: $scope.description,
+    });
+    $scope.name = '';
+    $scope.description = '';
+  };
+
   }
 
 angular
 .module('dunno')
 .controller('GroupsCtrl', ['$scope','groups', GroupsCtrl])
+
+
 })();
