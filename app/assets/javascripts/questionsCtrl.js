@@ -30,10 +30,22 @@ function QuestionsCtrl($scope, questions, question, answers){
       return answers.getComments(answer)
     }
 
-    $scope.commentOnAnswer = function(answer, comment){
-      answers.addComment(answer, comment).then(function(comment){
-
+    $scope.commentOnAnswer = function(answer){
+      console.log($scope.comment || "comment is nil")
+      return answers.addComment(answer.id, $scope.comment).then(function(res){
+        console.log("successfully commented", res.data)
       })
+
+      $scope.comment.body = '';
+    }
+
+    $scope.upvoteAnswer = function(answer){
+      answers.upvote(answer.id)
+      $state
+    }
+
+    $scope.downvoteAnswer = function(answer){
+      answers.downvote(answer.id)
     }
 
 

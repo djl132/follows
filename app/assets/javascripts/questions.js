@@ -20,7 +20,7 @@
 
        o.get = function(id) {
           return $http.get('/questions/' + id + '.json').then(function(q){
-            console.log("it is getting")
+            console.log("it is updating questions", q.data)
             return q.data;
           });
         };

@@ -31,6 +31,9 @@
 
                     <h6>  <b>{{answer.user.username}}</b>  answered</h6>
                     <h3>  {{answer.body}} </h3>
+                    <a ng-click="upvoteAnswer(answer)" class="btn btn-primary">{{answer.upvotes}}Upvotes</a>
+                    <h5>{{answer.upvotes - answer.downvotes}}</h5>
+                    <a ng-click="downvoteAnswer(answer)" class="btn btn-primary">{{answer.downvotes}}Downvotes</a>
 
                     <a>Comments</a>
 
@@ -39,15 +42,19 @@
                         <h7>  <b>{{comment.user.username}}</b>  commented</h6>
                         <h4>  {{comment.body}} </h3>
                         <br>
+                        <!-- <a ng-click="followQuestion(question.id)" class="btn btn-primary">{{comment.upvotes}}Upvote</a>
+                        <h5>{{comment.points}}</h5>
+                        <a ng-click="followQuestion(question.id)" class="btn btn-primary">{{comment.downvotes}}Downvote</a> -->
+
                     </div>
 
-                    <form ng-submit="comment(answer)"
+                    <form ng-submit="commentOnAnswer(answer)"
                       style="margin-top:30px;">
                       <div class="form-group">
                         <input type="text"
                         class="form-control"
                         placeholder="Comment on answer"
-                        ng-model="body"></input>
+                        ng-model="comment.body"></input>
                       </div>
                       <a type="submit" class="btn btn-primary">Comment</a>
                     </form>

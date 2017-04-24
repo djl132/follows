@@ -26,12 +26,10 @@ Rails.application.routes.draw do
 
       resources :comments
 
-      member do
         post '/up-vote' => 'votes#up_vote', as: :up_vote
         post '/down-vote' => 'votes#down_vote', as: :down_vote
         # put '/upvote' => 'answers#upvote'
         # put '/dwonvote' => 'answers#downvote'
-      end
 
     end
 end

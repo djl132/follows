@@ -2,7 +2,7 @@
 (function(){
 
 
-  function config($locationProvider, $stateProvider) {  
+  function config($locationProvider, $stateProvider) {
 
   //PROVIDES RULES ABOUT HOW TO DISPLAY LOCATION url info?
   $locationProvider
