@@ -11,6 +11,7 @@
            console.log(groups.data)
 // COPY RESPONSE DATA INTO SERVICES
            angular.copy(groups.data, o.groups);
+         }
        };
 
        o.get = function(id) {
@@ -30,10 +31,10 @@
 
 
        return o;
-    }
+    };
 
 angular
   .module('dunno')
-  .factory('questions', ['$http', Questions])
+  .factory('groups', ['$http', Groups])
 
 })();

@@ -2,7 +2,7 @@
 (function(){
 
 
-  function config($urlRouterProvider, $locationProvider, $stateProvider) {
+  function config($locationProvider, $stateProvider) {
 
   //PROVIDES RULES ABOUT HOW TO DISPLAY LOCATION url info?
   $locationProvider
@@ -15,6 +15,31 @@
   //$stateProvider.state(stateName, stateConfig)
   //stateName is a unique string that identifies a state and stateConfig is an object that defines specific properties of the state.
   $stateProvider //METHOD-CHAINING
+
+  .state('login', {
+   url: '/login',
+   templateUrl: 'auth/_login.html',
+   controller: 'AuthCtrl',
+   onEnter: ['$state', 'Auth', function($state, Auth) {
+     if (Auth.isAuthenticated()){
+     Auth.currentUser().then(function (){
+       $state.go('home');
+     })
+   }
+ }]
+ })
+ .state('register', {
+   url: '/register',
+   templateUrl: 'auth/_register.html',
+   controller: 'AuthCtrl',
+   onEnter: ['$state', 'Auth', function($state, Auth) {
+     if (Auth.isAuthenticated()){
+     Auth.currentUser().then(function (){
+       $state.go('home');
+     })
+   }
+ }]
+})
     .state('home', {
         url:'/',
         templateUrl: 'home/_home.html',
@@ -42,7 +67,7 @@
         templateUrl: 'groups/_groups.html',
         controller: 'GroupsCtrl',
         resolve: {
-          groups: ['groups', function(groups) {
+          groupsPromise: ['groups', function(groups) {
             return groups.getAll();
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
@@ -57,33 +82,8 @@
             return groups.get($stateParams.id);
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
-    })
-    .state('login', {
-     url: '/login',
-     templateUrl: 'auth/_login.html',
-     controller: 'AuthCtrl',
-     onEnter: ['$state', 'Auth', function($state, Auth) {
-       if (Auth.isAuthenticated()){
-       Auth.currentUser().then(function (){
-         $state.go('home');
-       })
-     }
-   }]
-   })
-   .state('register', {
-     url: '/register',
-     templateUrl: 'auth/_register.html',
-     controller: 'AuthCtrl',
-     onEnter: ['$state', 'Auth', function($state, Auth) {
-       if (Auth.isAuthenticated()){
-       Auth.currentUser().then(function (){
-         $state.go('home');
-       })
-     }
-   }]
- });
+    });
 
-  $urlRouterProvider.otherwise('home');
 
     };
 
