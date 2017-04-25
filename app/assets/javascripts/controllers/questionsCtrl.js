@@ -7,8 +7,10 @@ function QuestionsCtrl($scope, questions, question, answers){
   // BIND question MODEL DATA TO FORNT END, thorugh a SERVICE
   $scope.question = question
 
+  ///////TSHI Q HAS ANSWER, COMMENTS
+
   $scope.answer = function(questiony){
-    if(!$scope.body || $scope.body === '') { return; }
+    if(!$scope.body) { return; }
 
     // CREATS question ON BACKEND ANDTHEN UPDATES
     //IT IN THE FRONTEND
@@ -25,29 +27,20 @@ function QuestionsCtrl($scope, questions, question, answers){
 
     };
 
-// BUT THIS ISN'T SMART LOADING COMMENTS
-    $scope.getCommentsForAnswer = function(answer){
-      return answers.getComments(answer)
-    }
-
-    $scope.commentOnAnswer = function(answer){
-      if (!$scope.commentBody || $scope.commentBody == '') {return;}
-      answers.addComment(answer.id, {body: $scope.commentBody}).then(function(res){
-        console.log("successfully commented", res.data)
-      })
-
-      $scope.commentBody = '';
-    }
-
-    $scope.upvoteAnswer = function(answer){
+    $scope.upvoteAnswer = function(answer, index){
       answers.upvote(answer.id).then(function(answer){
-
+        console.log(answer.data);
+        $scope.question.answers[index] = answer.data;
 
       })
     }
 
-    $scope.downvoteAnswer = function(answer){
-      answers.downvote(answer.id)
+    $scope.downvoteAnswer = function(answer, index){
+      answers.downvote(answer.id).then(function(answer){
+        console.log(answer.data);
+        $scope.question.answers[index] = answer.data;
+
+      })
     }
 
 

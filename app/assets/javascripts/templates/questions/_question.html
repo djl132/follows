@@ -31,9 +31,9 @@
 
                     <h6>  <b>{{answer.user.username}}</b>  answered</h6>
                     <h3>  {{answer.body}} </h3>
-                    <a ng-click="upvoteAnswer(answer)" class="btn btn-primary">{{answer.upvotes}} Upvotes</a>
+                    <a ng-click="upvoteAnswer(answer, $index)" class="btn btn-primary">{{answer.upvotes}} Upvotes</a>
                     <span>{{answer.upvotes - answer.downvotes}}</span>
-                    <a ng-click="downvoteAnswer(answer)" class="btn btn-primary">{{answer.downvotes}} Downvotes</a>
+                    <a ng-click="downvoteAnswer(answer, $index)" class="btn btn-primary">{{answer.downvotes}} Downvotes</a>
 
                     <h5>Comments</h5>
 

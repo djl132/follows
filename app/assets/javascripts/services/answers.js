@@ -30,16 +30,13 @@
 
 
        o.upvote = function(id){
-         return $http.post('/api/v1/answers/' + id + '/up-vote.json').then(function(a){
-           console.log("upvoted!")
-         })
+         return $http.post('/api/v1/answers/' + id + '/up-vote.json')
+
 
        };
 
        o.downvote = function(id){
-         return $http.post('/api/v1/answers/' + id + '/down-vote.json').then(function(a){
-           console.log("downvoted!")
-         })
+         return $http.post('/api/v1/answers/' + id + '/down-vote.json')
 
        };
 

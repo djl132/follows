@@ -9,7 +9,11 @@ before_action :authenticate_user!
       @vote = current_user.votes.create(value: 1, answer: @answer)
     elsif @vote.value == 1
       @vote.destroy
+      @vote.save
+
+      puts "#{@answer.inspect} was destroyed"
       puts "#{@vote.inspect} was destroyed"
+
     else
       @vote.update_attribute(:value, 1)
     end
@@ -26,6 +30,8 @@ before_action :authenticate_user!
        @vote = current_user.votes.create(value: -1, answer: @answer)
      elsif @vote.value == -1
        @vote.destroy
+       @vote.save
+
      else
        @vote.update_attribute(:value, -1)
      end

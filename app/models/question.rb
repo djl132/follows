@@ -4,6 +4,8 @@ class Question < ApplicationRecord
 
   has_many :answers
 
+  has_many :users, through: :following
+
 
   validates :title, length: {minimum: 7}, presence: true
  validates :body, length: {minimum: 7}, presence: true

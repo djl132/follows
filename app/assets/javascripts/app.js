@@ -88,7 +88,7 @@
     };
 
 
-  angular.module('dunno',['templates','Devise', 'ui.router'])
+  angular.module('dunno',['templates','Devise','ui.router'])
   .config(config)
 
 })();
