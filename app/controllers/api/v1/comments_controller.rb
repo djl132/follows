@@ -9,13 +9,13 @@ before_action :authorize_user, only: [:destroy]
 def index
   answer = Answer.find(params[:answer_id])
   puts answer.comments.inspect
-  respond_with answer.comments
+  respond_with :api, :v1, answer.comments
 end
 
 def create
    answer = Answer.find(params[:answer_id])
    comment = answer.comments.create(comment_params.merge(user_id: current_user.id))
-   respond_with answer, comment
+   respond_with :api, :v1, answer, comment
 end
 
  def upvote
@@ -23,7 +23,7 @@ end
    comment = answer.comments.find(params[:id])
    comment.increment!(:upvotes)
 
-   respond_with answer, comment
+   respond_with :api, :v1, answer, comment
  end
 
  def downvote
@@ -31,7 +31,7 @@ end
    comment = answer.comments.find(params[:id])
    comment.increment!(:downvotes)
 
-   respond_with answer, comment
+   respond_with :api, :v1, answer, comment
  end
 
  private

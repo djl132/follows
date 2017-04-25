@@ -5,7 +5,7 @@
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
-      respond_with Question.all
+      respond_with :api, :v1, Question.all
     end
 
     def create
@@ -13,12 +13,12 @@
         group = Group.find_by(name: params[:topic])
         question = Question.create(question_params.merge(user_id: current_user.id, group: group))
         # question.group_id = Group.find_by(name: params[:question][:topic]).id
-        respond_with question
+        respond_with :api, :v1, question
     end
 
      def show
        puts "went through"
-       respond_with Question.find(params[:id])
+       respond_with :api, :v1, Question.find(params[:id])
      end
 
 

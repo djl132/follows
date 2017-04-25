@@ -2,7 +2,7 @@ class Api::V1::GroupsController < ApiController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    respond_with Group.all
+    respond_with :api, :v1, Group.all
   end
 
   def create
@@ -13,7 +13,7 @@ class Api::V1::GroupsController < ApiController
   end
 
    def show
-     respond_with Group.find(params[:id])
+     respond_with :api, :v1, Group.find(params[:id])
    end
 
 

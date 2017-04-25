@@ -28,6 +28,7 @@
        o.create = function(question){
         //  send question to BACKEND API
          return $http.post('/api/v1/questions.json', question).then(function(q){
+           console.log(q.data)
           //  update frontend if backend adds question
            o.questions.push(q.data);
          })

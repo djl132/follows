@@ -7,6 +7,7 @@ function HomeCtrl($scope, questions){
   // BIND question MODEL DATA TO FORNT END, thorugh a SERVICE
   $scope.questions = questions.questions
 
+
   $scope.ask = function(){
     if(!$scope.title || $scope.title === '' || !$scope.body || $scope.body === ''|| !$scope.topic_name || $scope.topic_name === '') { return; }
 
