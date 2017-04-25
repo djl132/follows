@@ -8,7 +8,6 @@ before_action :authorize_user, only: [:destroy]
 
 def index
   answer = Answer.find(params[:answer_id])
-  puts answer.comments.inspect
   respond_with :api, :v1, answer.comments
 end
 
@@ -18,25 +17,25 @@ def create
    respond_with :api, :v1, answer, comment
 end
 
- def upvote
-   answer = Answer.find(params[:post_id])
-   comment = answer.comments.find(params[:id])
-   comment.increment!(:upvotes)
-
-   respond_with :api, :v1, answer, comment
- end
-
- def downvote
-   answer = Answer.find(params[:post_id])
-   comment = answer.comments.find(params[:id])
-   comment.increment!(:downvotes)
-
-   respond_with :api, :v1, answer, comment
- end
+ # def upvote
+ #   answer = Answer.find(params[:post_id])
+ #   comment = answer.comments.find(params[:id])
+ #   comment.increment!(:upvotes)
+ #
+ #   respond_with :api, :v1, answer, comment
+ # end
+ #
+ # def downvote
+ #   answer = Answer.find(params[:post_id])
+ #   comment = answer.comments.find(params[:id])
+ #   comment.increment!(:downvotes)
+ #
+ #   respond_with :api, :v1, answer, comment
+ # end
 
  private
    def comment_params
-     params.require(:comment).permit(:content)
+     params.require(:comment).permit(:body)
    end
 
    def authorize_user

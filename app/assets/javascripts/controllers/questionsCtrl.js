@@ -7,12 +7,12 @@ function QuestionsCtrl($scope, questions, question, answers){
   // BIND question MODEL DATA TO FORNT END, thorugh a SERVICE
   $scope.question = question
 
-  $scope.answer = function(){
+  $scope.answer = function(questiony){
     if(!$scope.body || $scope.body === '') { return; }
 
     // CREATS question ON BACKEND ANDTHEN UPDATES
     //IT IN THE FRONTEND
-    questions.addAnswer(question.id, {
+    questions.addAnswer(questiony.id, {
       body: $scope.body
 
       // THIS WORKS BECAUSE JSON RETURNED ABOUT QUESTIONS, INCLUDES ANSWERS TOO RIGHT
@@ -31,12 +31,12 @@ function QuestionsCtrl($scope, questions, question, answers){
     }
 
     $scope.commentOnAnswer = function(answer){
-      console.log($scope.comment || "comment is nil")
-      return answers.addComment(answer.id, $scope.comment).then(function(res){
+      if (!$scope.commentBody || $scope.commentBody == '') {return;}
+      answers.addComment(answer.id, {body: $scope.commentBody}).then(function(res){
         console.log("successfully commented", res.data)
       })
 
-      $scope.comment.body = '';
+      $scope.commentBody = '';
     }
 
     $scope.upvoteAnswer = function(answer){

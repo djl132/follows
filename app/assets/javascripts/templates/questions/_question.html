@@ -32,10 +32,10 @@
                     <h6>  <b>{{answer.user.username}}</b>  answered</h6>
                     <h3>  {{answer.body}} </h3>
                     <a ng-click="upvoteAnswer(answer)" class="btn btn-primary">{{answer.upvotes}} Upvotes</a>
-                    <h5>{{answer.upvotes - answer.downvotes}}</h5>
+                    <span>{{answer.upvotes - answer.downvotes}}</span>
                     <a ng-click="downvoteAnswer(answer)" class="btn btn-primary">{{answer.downvotes}} Downvotes</a>
 
-                    <a>Comments</a>
+                    <h5>Comments</h5>
 
                     <div ng-repeat="comment in answer.comments">
 
@@ -54,7 +54,7 @@
                         <input type="text"
                         class="form-control"
                         placeholder="Comment on answer"
-                        ng-model="comment.body"></input>
+                        ng-model="commentBody"></input>
                       </div>
                       <a type="submit" class="btn btn-primary">Comment</a>
                     </form>
@@ -76,7 +76,7 @@
     </h4>
 
 
-    <form ng-submit="answer()"
+    <form ng-submit="answer(question)"
       style="margin-top:30px;">
 
       <h3>Answer question</h3>
