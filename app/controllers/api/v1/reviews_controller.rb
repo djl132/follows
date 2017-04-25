@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class Api::v1::ReviewsController < ApiController
 
 # must be signed in to create comment
 before_action :authenticate_user!, only: [:create, :destroy]

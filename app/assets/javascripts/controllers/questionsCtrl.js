@@ -40,8 +40,10 @@ function QuestionsCtrl($scope, questions, question, answers){
     }
 
     $scope.upvoteAnswer = function(answer){
-      answers.upvote(answer.id)
-      $state
+      answers.upvote(answer.id).then(function(answer){
+
+
+      })
     }
 
     $scope.downvoteAnswer = function(answer){

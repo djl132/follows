@@ -1,4 +1,4 @@
-  class QuestionsController < ApplicationController
+  class Api::v1::QuestionsController < ApiController
 
     # MUST be signed in as an admin in order to CREATE, UPDATE, NEW, EDIT
     # before_action :require_sign_in, except: [:index, :show]

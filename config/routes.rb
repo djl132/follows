@@ -6,30 +6,34 @@ Rails.application.routes.draw do
 
 
   root to: 'application#angular'
+  get "*unmatched_route", to: "application#angular"
 
 
+  namespace :api do
+    namespace :v1 do
+      resources :questions do
 
-  resources :questions do
+          resources :answers, except: [:index]
 
-      resources :answers, except: [:index]
+        end
 
-    end
+        resources :groups do
 
-    resources :groups do
+          resources :questions
 
-      resources :questions
-
-    end
+        end
 
 
-    resources :answers, only: [] do
+        resources :answers, only: [] do
 
-      resources :comments
+          resources :comments
 
-        post '/up-vote' => 'votes#up_vote', as: :up_vote
-        post '/down-vote' => 'votes#down_vote', as: :down_vote
-        # put '/upvote' => 'answers#upvote'
-        # put '/dwonvote' => 'answers#downvote'
+            post '/up-vote' => 'votes#up_vote', as: :up_vote
+            post '/down-vote' => 'votes#down_vote', as: :down_vote
+            # put '/upvote' => 'answers#upvote'
+            # put '/dwonvote' => 'answers#downvote'
 
+        end
+      end
     end
 end

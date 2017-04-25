@@ -1,11 +1,10 @@
-class VotesController < ApplicationController
+class Api::v1::VotesController < ApiController
 
-
+before_action :authenticate_user!
 
   def up_vote
     @answer = Answer.find(params[:answer_id])
     @vote = @answer.votes.where(user_id: current_user.id).first
-puts @vote.inspect
     if !@vote
       @vote = current_user.votes.create(value: 1, answer: @answer)
     elsif @vote.value == 1

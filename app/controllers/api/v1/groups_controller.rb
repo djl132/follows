@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class Api::v1::GroupsController < ApiController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index

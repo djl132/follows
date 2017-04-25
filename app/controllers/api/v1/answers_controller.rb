@@ -1,4 +1,4 @@
-class AnswersController < ApplicationController
+class Api::v1::AnswersController < ApiController
   before_action :authenticate_user!, only: [:create]
 
   def create
