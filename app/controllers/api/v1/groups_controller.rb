@@ -9,8 +9,8 @@ class Api::V1::GroupsController < ApiController
       group = Group.create(group_params)
       group.users.push(current_user)
       puts group.users.inspect
-      respond_with group
-  end
+      respond_with :api, :v1, group
+  end 
 
    def show
      respond_with :api, :v1, Group.find(params[:id])
