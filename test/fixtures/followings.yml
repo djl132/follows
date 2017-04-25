@@ -2,8 +2,8 @@
 
 one:
   user: one
-  question: one
+  following_question: one
 
 two:
   user: two
-  question: two
+  following_question: two

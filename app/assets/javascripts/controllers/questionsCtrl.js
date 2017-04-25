@@ -27,6 +27,25 @@ function QuestionsCtrl($scope, questions, question, answers){
 
     };
 
+// // BUT THIS ISN'T SMART LOADING COMMENTS
+//     $scope.getCommentsForAnswer = function(answer, index){
+//       return answers.getComments(answer)
+//     }
+
+    $scope.commentOnAnswer = function(answer, index){
+      if (!$scope.commentBody) {return;}
+      answers.addComment(answer.id, {body: $scope.commentBody}).then(function(commentsResponse){
+        console.log("Got comment data for answer!", commentResponse.data)
+          $scope.question.answers[index].comments.push(commentsReponse.data);
+      }, console.log("failed to load"))
+
+      $scope.commentBody = '';
+    }
+
+    // $scope.followQuestion = function(question){
+    //     question.follow(question.id
+    // }
+
     $scope.upvoteAnswer = function(answer, index){
       answers.upvote(answer.id).then(function(answer){
         console.log(answer.data);

@@ -8,8 +8,13 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
 
-  has_many :questions
+  has_many :followings
+  has_many :following_questions, class_name: "Question", foreign_key: "user_id", through: :followings
   # belongs_to :group
+
+
+  has_many :followings
+has_many :following_questions, class_name: "Question", foreign_key: "user_id", through: :followings
 
 
 

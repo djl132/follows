@@ -17,10 +17,7 @@
        };
 
        o.getComments = function(answer) {
-          return $http.get('/api/v1/answers/' + answer.id + '/comments.json').then(function(commentsResponse){
-            console.log("Got comment data for answer!", commentResponse.data)
-              return commentsReponse.data;
-          }, console.log("failed to load"))
+          return $http.get('/api/v1/answers/' + answer.id + '/comments.json')
         };
 
 // add new answer to a question
