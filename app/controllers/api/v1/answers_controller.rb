@@ -1,17 +1,17 @@
-class Api::v1::AnswersController < ApiController
+class Api::V1::AnswersController < ApiController
   before_action :authenticate_user!, only: [:create]
 
   def create
     q = Question.find(params[:question_id])
     answer = q.answers.create(answer_params.merge(user_id: current_user.id))
     puts answer.inspect
-    respond_with q, answer
+    respond_with :api, :v1, q, answer
   end
 
   def show
      q = Question.find(params[:question_id])
      answer = q.answers.find(params[:answer_id])
-     respond_with q, answer
+     respond_with :api, :v1, q, answer
   end
 
   private

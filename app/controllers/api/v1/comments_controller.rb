@@ -1,4 +1,4 @@
-class Api::v1::CommentsController < ApiController
+class Api::V1::CommentsController < ApiController
 # must be signed in to create comment
 # before_action :require_sign_in
 #

@@ -1,4 +1,4 @@
-class Api::v1::VotesController < ApiController
+class Api::V1::VotesController < ApiController
 
 before_action :authenticate_user!
 
@@ -9,12 +9,13 @@ before_action :authenticate_user!
       @vote = current_user.votes.create(value: 1, answer: @answer)
     elsif @vote.value == 1
       @vote.destroy
+      puts "#{@vote.inspect} was destroyed"
     else
       @vote.update_attribute(:value, 1)
     end
 
 # send to page taht triggered the action
-    respond_with @answer.question, @answer
+    respond_with :api, :v1, @answer.question, @answer
   end
 
   def down_vote
@@ -29,7 +30,7 @@ before_action :authenticate_user!
        @vote.update_attribute(:value, -1)
      end
 
-     respond_with @answer.question, @answer
+     respond_with :api, :v1, @answer.question, @answer
    end
 
 
