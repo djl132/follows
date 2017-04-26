@@ -3,7 +3,7 @@
 
 (function(){
 
-function QuestionsCtrl($scope, questions, question, answers){
+function QuestionsCtrl($scope, questions, question, answers, follows){
 
   // this.follows = follows
   // BIND question MODEL DATA TO FORNT END, thorugh a SERVICE
@@ -64,13 +64,26 @@ function QuestionsCtrl($scope, questions, question, answers){
       })
     }
 
+    $scope.followQuestion = function(q){
+      follows.create(q).then(function(success){
+        question.following = true;
+      })
+    }
+
+    $scope.unfollowQuestion = function(q){
+      follows.destroy(q, current_user).then(function(success){
+        question.following = false;
+      })
+    }
+
+
 
   }
 
 
 angular
 .module('dunno')
-.controller('QuestionsCtrl', ['$scope','questions','question','answers', QuestionsCtrl])
+.controller('QuestionsCtrl', ['$scope','questions','question','answers','follows', QuestionsCtrl])
 
 
 })();

@@ -62,7 +62,14 @@
           }],
           followsPromise: ['follows', function(follows) {
             follows.getAll()
-          }]
+          }],
+          onEnter: ['$state', 'Auth', function($state, Auth) {
+            if (Auth.isAuthenticated()){
+            Auth.currentUser().then(function (){
+              $state.go('home');
+            })
+          }
+        }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
     })
     .state('groups', {

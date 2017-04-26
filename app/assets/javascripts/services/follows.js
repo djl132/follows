@@ -18,19 +18,16 @@
 
        followService.create = function(question){
         //  send question to BACKEND API
-         return $http.post('/api/v1/questions/' + question.id + '/followings.json').then(function(q){
-           console.log(q.data)
+         return $http.post('/api/v1/questions/' + question.id + '/followings.json')
           //  update frontend if backend adds question
-           o.questions.push(q.data);
-         })
+
        };
 
-       followService.destroy = function(question, follow){
+       followService.destroy = function(question){
         //  send question to BACKEND API
         return $http.delete('/api/v1/questions/' + question.id + '/followings/' + follow.id + '.json').then(function(q){
            console.log('successfully deleted')
           //  update frontend if backend adds question
-           o.questions.push(q.data);
          })
        };
 

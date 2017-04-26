@@ -71,7 +71,9 @@
   <div class ="col-md-4">
 
     <h4>
-      <a ng-click="followQuestion(question.id)" class="btn btn-primary">Follow Question</a>
+      <a ng-click="followQuestion(question)" ng-show="!question.following" class="btn btn-primary">Follow Question</a>
+      <a ng-click="unfollowQuestion(question)" ng-show="question.following" class="btn btn-primary">Unfollow Question</a>
+
       <a ng-click="followTopic(question.group)" class="btn btn-primary">Follow Topic</a>
     </h4>
 
