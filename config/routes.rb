@@ -7,9 +7,14 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+
+      get '/followings' => 'followings#index'
+
       resources :questions do
 
           resources :answers, except: [:index]
+          resources :followings, only: [:create, :destroy]
+
 
         end
 

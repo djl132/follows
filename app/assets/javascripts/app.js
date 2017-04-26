@@ -47,7 +47,7 @@
         resolve: {
           // get real-time questions from backend
           questionPromise: ['questions', function(questions){
-            return questions.getAll();
+            questions.getAll();
           }]
         }
 
@@ -59,6 +59,9 @@
         resolve: {
           question: ['$stateParams', 'questions','answers', function($stateParams, questions, answers) {
             return questions.get($stateParams.id);
+          }],
+          followsPromise: ['follows', function(follows) {
+            follows.getAll()
           }]
         }//SIMPLY TELLS VIEW OF STATE WHICH CONTROLLER TO USE, DOES NOT GIVE IT ACCESS
     })

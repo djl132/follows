@@ -4,6 +4,8 @@
 (function(){
 
 function QuestionsCtrl($scope, questions, question, answers){
+
+  // this.follows = follows
   // BIND question MODEL DATA TO FORNT END, thorugh a SERVICE
   $scope.question = question
 

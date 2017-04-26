@@ -9,7 +9,7 @@
 
       // get all posts, and update SERVICE OBJECT(FRONTEND)
       o.getAll = function() {
-         return $http.get('/api/v1/groups.json').then(function(groups){
+         return $http.get('/groups.json').then(function(groups){
            console.log(groups.data)
 // COPY RESPONSE DATA INTO SERVICES
            angular.copy(groups.data, o.groups);
@@ -17,7 +17,7 @@
        };
 
        o.get = function(id) {
-          return $http.get('/api/v1/groups/' + id + '.json').then(function(group){
+          return $http.get('/groups/' + id + '.json').then(function(group){
             console.log("it is getting a single group view")
             return group.data;
           });
@@ -25,7 +25,7 @@
 
        o.create = function(group){
         //  send question to BACKEND API
-         return $http.post('/api/v1/groups.json', group).then(function(group){
+         return $http.post('/groups.json', group).then(function(group){
           //  update frontend if backend adds question
            o.groups.push(group.data);
          })
